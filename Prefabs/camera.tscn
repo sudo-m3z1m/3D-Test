@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr45hdil1l0u4"]
+
+[ext_resource type="PackedScene" uid="uid://bl3s2mrd0mo6p" path="res://Models/camera.glb" id="1_sba4y"]
+
+[node name="camera" instance=ExtResource("1_sba4y")]
+
+[node name="Cube" parent="." index="0"]
+layers = 2

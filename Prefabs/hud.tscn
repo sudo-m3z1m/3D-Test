@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://s4pc2vbh38sb"]
+
+[ext_resource type="Texture2D" uid="uid://drp3xlna3c1st" path="res://Sprites/aim.png" id="1_tgyba"]
+[ext_resource type="Script" path="res://Prefabs/camera.gd" id="2_omoq1"]
+[ext_resource type="PackedScene" uid="uid://dr45hdil1l0u4" path="res://Prefabs/camera.tscn" id="2_p8w1a"]
+
+[node name="HUD" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_tgyba")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.637
+anchor_top = 0.059
+anchor_right = 0.983
+anchor_bottom = 0.41
+offset_left = 0.175964
+offset_top = -0.232002
+offset_right = -0.416016
+offset_bottom = 0.319977
+grow_horizontal = 0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(398, 227)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.1624, 4.98336, 0)
+cull_mask = 1048573
+current = true
+script = ExtResource("2_omoq1")
+
+[node name="camera" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("2_p8w1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26071e-07, 0, -2.88416)

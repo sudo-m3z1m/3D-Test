@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0q77j3ng0qth"]
+
+[ext_resource type="Script" path="res://Prefabs/player.gd" id="1_o3v77"]
+[ext_resource type="PackedScene" uid="uid://cmd5s0nuc85k1" path="res://Prefabs/decal.tscn" id="2_e7177"]
+[ext_resource type="PackedScene" uid="uid://bfaiip6lkh0ps" path="res://Prefabs/hand_with_knife.tscn" id="3_2t8bu"]
+[ext_resource type="Script" path="res://Prefabs/PlayerStates/state_machine.gd" id="4_38axa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uhyu"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97127, 0)
+script = ExtResource("1_o3v77")
+jump_strenght = 100.0
+mouse_sensivity = 0.009
+max_upper_angle_degress = 110.0
+speed_factor = 4.0
+decal_scene = ExtResource("2_e7177")
+max_speed = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8uhyu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32778, 0)
+current = true
+fov = 90.0
+
+[node name="WeaponPlace" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.447, -0.922, -1.267)
+
+[node name="hand_with_knife" parent="Camera3D/WeaponPlace" instance=ExtResource("3_2t8bu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00714827, -1.25639, 1.82472)
+
+[node name="RayCast" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+target_position = Vector3(0, -100, 0)
+
+[node name="StateMachine" type="Node3D" parent="."]
+script = ExtResource("4_38axa")
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="end_dash"]

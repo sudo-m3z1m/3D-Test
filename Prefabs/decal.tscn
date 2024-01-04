@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmd5s0nuc85k1"]
+
+[ext_resource type="Texture2D" uid="uid://6r3ou1jawvum" path="res://Sprites/knife_step.png" id="1_npg3d"]
+
+[node name="Decal" type="Decal"]
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("1_npg3d")

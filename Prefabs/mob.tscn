@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhcmymhh45fs6"]
+
+[ext_resource type="Script" path="res://Prefabs/mob.gd" id="1_kym20"]
+
+[node name="Mob" type="CharacterBody3D"]
+script = ExtResource("1_kym20")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
