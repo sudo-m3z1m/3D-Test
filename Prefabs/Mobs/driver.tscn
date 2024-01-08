@@ -6,14 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://dot0cbt2uq8b1" path="res://Sounds/real_hero.mp3" id="4_7ug5f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhrvl"]
-size = Vector3(13.357, 7.53745, 1)
+size = Vector3(1.04205, 7.53745, 1)
 
 [node name="Mob" instance=ExtResource("1_srcfo")]
 script = ExtResource("2_4yjh1")
+lenght_to_the_player = 10.0
 max_mob_speed = 20.0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_uhrvl")
+disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

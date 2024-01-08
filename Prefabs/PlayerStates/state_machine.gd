@@ -8,12 +8,13 @@ class_name StateMachine
 
 var cur_state: States = States.IDLE_STATE
 
-enum States {IDLE_STATE, MOVING_STATE, DASH_STATE, SLIDE_STATE}
+enum States {IDLE_STATE, MOVING_STATE, DASH_STATE, SLIDE_STATE, HOOK_STATE}
 
 var states: Dictionary = {
 	States.IDLE_STATE : "res://Prefabs/PlayerStates/idle.gd",
 	States.MOVING_STATE : "res://Prefabs/PlayerStates/moving.gd",
-	States.DASH_STATE : "res://Prefabs/PlayerStates/dash.gd"
+	States.DASH_STATE : "res://Prefabs/PlayerStates/dash.gd",
+	States.HOOK_STATE : "res://Prefabs/PlayerStates/hook.gd"
 }
 
 func _process(delta):

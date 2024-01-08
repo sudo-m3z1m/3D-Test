@@ -8,6 +8,7 @@ class_name Player
 @export var speed_factor: float
 @export var decal_scene: PackedScene
 @export var max_speed: float
+@export var is_on_hook: bool = false
 
 @onready var camera: Camera3D = $Camera3D
 @onready var raycast: RayCast3D = $Camera3D/RayCast
@@ -22,8 +23,9 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	velocity.y -= GRAVITY
-	velocity = velocity.lerp(get_direction() * max_speed, 0.25)
-	
+	if !is_on_hook or is_on_floor():
+		velocity = velocity.lerp(get_direction() * max_speed, 0.25)
+
 	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, max_upper_angle_degress)
 	move_and_slide()
 
@@ -54,6 +56,9 @@ func _input(event):
 
 	if event.is_action_pressed("Mouse Left"):
 		attack()
+	
+	if event.is_action_pressed("Hook"):
+		state_machine.change_state(state_machine.States.HOOK_STATE)
 
 	if event.is_action_pressed("Shift"):
 		state_machine.change_state(state_machine.States.DASH_STATE)

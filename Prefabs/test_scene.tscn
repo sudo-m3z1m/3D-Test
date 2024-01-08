@@ -11,11 +11,12 @@ albedo_texture = ExtResource("1_drkl1")
 
 [node name="Mob" parent="." instance=ExtResource("3_nnj7s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3649, -17.6134)
+lenght_to_the_player = 0.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45322, 0, 0)
 use_collision = true
-size = Vector3(80.5834, 0.117786, 100.369)
+size = Vector3(221.732, 0.117786, 158.412)
 material = SubResource("StandardMaterial3D_c2kxn")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
@@ -32,3 +33,7 @@ size = Vector3(9.77288, 1.29417, 11.0819)
 transform = Transform3D(0.628642, 3.39941e-08, -0.777695, 0.777695, -2.74788e-08, 0.628642, 0, -1, -4.37114e-08, -6.87251, 57.0914, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_u2g3r")]
+max_speed = 0.0
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.8348, 0)

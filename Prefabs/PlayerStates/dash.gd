@@ -2,7 +2,7 @@ extends State
 
 var dash_speed: float = 200
 var default_camera_fov: float
-var camera_fov: float = 75
+var camera_fov: float = 110
 var tween: Tween
 
 func _enter_state(anim: AnimationPlayer, player: Player) -> void:
