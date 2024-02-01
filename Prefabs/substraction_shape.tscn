@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://u4ooljvaiwbq"]
+
+[node name="SubstractionShape" type="CSGCombiner3D"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(8.18457, 7.12305, 7.98438)

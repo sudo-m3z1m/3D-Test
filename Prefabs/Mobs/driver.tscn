@@ -15,13 +15,20 @@ max_mob_speed = 20.0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("BoxShape3D_uhrvl")
-disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="1"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shaded = true
 texture = ExtResource("2_fme8g")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
 stream = ExtResource("4_7ug5f")
 attenuation_model = 2
 autoplay = true
+bus = &"Voice"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+path_desired_distance = 5.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.776471, 0, 0, 1)

@@ -1,45 +1,93 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0q77j3ng0qth"]
+[gd_scene load_steps=10 format=3 uid="uid://c0q77j3ng0qth"]
 
 [ext_resource type="Script" path="res://Prefabs/player.gd" id="1_o3v77"]
-[ext_resource type="PackedScene" uid="uid://cmd5s0nuc85k1" path="res://Prefabs/decal.tscn" id="2_e7177"]
+[ext_resource type="PackedScene" uid="uid://u4ooljvaiwbq" path="res://Prefabs/substraction_shape.tscn" id="2_rafh1"]
 [ext_resource type="PackedScene" uid="uid://bfaiip6lkh0ps" path="res://Prefabs/hand_with_knife.tscn" id="3_2t8bu"]
+[ext_resource type="PackedScene" uid="uid://opbokwmqknmk" path="res://Prefabs/hook_segment.tscn" id="3_mt0pn"]
 [ext_resource type="Script" path="res://Prefabs/PlayerStates/state_machine.gd" id="4_38axa"]
+[ext_resource type="PackedScene" uid="uid://d14g8y61gvhxl" path="res://Models/glock.glb" id="4_bjsf5"]
+[ext_resource type="AudioStream" uid="uid://cfb8uoeehl5h7" path="res://Sounds/shot.mp3" id="6_mbk0m"]
+[ext_resource type="PackedScene" uid="uid://wm44x5fpbays" path="res://Prefabs/input_handler.tscn" id="6_nypf3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8uhyu"]
+height = 4.0
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97127, 0)
 script = ExtResource("1_o3v77")
-jump_strenght = 100.0
-mouse_sensivity = 0.009
-max_upper_angle_degress = 110.0
-speed_factor = 4.0
-decal_scene = ExtResource("2_e7177")
-max_speed = 25.0
+mouse_sensivity = 0.01
+max_upper_angle_degress = 90.0
+mesh_packed = ExtResource("2_rafh1")
+hook_segment_packed = ExtResource("3_mt0pn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.979029, 0)
 shape = SubResource("CapsuleShape3D_8uhyu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0773545, 1.36158, 0.45882)
+layers = 512
+size = Vector3(1, 4.71295, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32778, 0)
+cull_mask = 1048063
 current = true
 fov = 90.0
 
 [node name="WeaponPlace" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.447, -0.922, -1.267)
 
+[node name="glock" parent="Camera3D/WeaponPlace" instance=ExtResource("4_bjsf5")]
+transform = Transform3D(-0.75, 0, -1.13247e-07, 0, 0.75, 0, 1.13247e-07, 0, -0.75, -1.64522, -1.25639, 1.23929)
+
+[node name="Skeleton3D" parent="Camera3D/WeaponPlace/glock/Armature" index="0"]
+bones/1/rotation = Quaternion(0.108537, -0.108537, -0.698727, 0.698727)
+bones/2/rotation = Quaternion(0.574954, -0.2326, -0.482336, 0.618609)
+bones/3/rotation = Quaternion(0.199921, -0.434002, -0.0601026, 0.876391)
+bones/4/rotation = Quaternion(0.0716604, -0.808137, -0.226039, 0.539153)
+bones/6/rotation = Quaternion(-0.0479399, -0.552186, -0.0576205, 0.830345)
+bones/8/rotation = Quaternion(-0.209537, 0.32512, -0.374434, 0.842728)
+bones/10/rotation = Quaternion(0.581827, 0.272517, 0.392304, 0.658263)
+bones/11/rotation = Quaternion(0.322219, 0.0575937, 0.0726706, 0.942113)
+bones/12/rotation = Quaternion(0.119466, 0.253435, 0.231464, 0.931624)
+bones/13/rotation = Quaternion(-0.194682, -0.0407196, -0.32535, 0.92444)
+bones/14/rotation = Quaternion(-0.305769, 0.0388886, -0.17439, 0.93519)
+bones/15/rotation = Quaternion(-0.0101042, 0.255846, 0.616578, 0.744494)
+bones/16/rotation = Quaternion(-0.257321, -0.121586, 0.556148, 0.780834)
+
+[node name="Cube_001" parent="Camera3D/WeaponPlace/glock/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.0140963, 0.00337978, -0.100893, 0.00648102, 0.200169, 0.001941, 0.199709, -0.00673448, 0.00705845, -0.44742, 1.76996, 2.99028)
+
+[node name="AnimationPlayer" parent="Camera3D/WeaponPlace/glock" index="1"]
+autoplay = "Idle"
+
 [node name="hand_with_knife" parent="Camera3D/WeaponPlace" instance=ExtResource("3_2t8bu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00714827, -1.25639, 1.82472)
+visible = false
 
 [node name="RayCast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 visible = false
 target_position = Vector3(0, -100, 0)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_size = 1.0
+shadow_enabled = true
+shadow_normal_bias = 3.0
+spot_range = 56.9579
+spot_attenuation = 0.870551
+spot_angle = 27.14
+spot_angle_attenuation = 0.840896
+
 [node name="StateMachine" type="Node3D" parent="."]
 script = ExtResource("4_38axa")
 
-[node name="DashTimer" type="Timer" parent="."]
-one_shot = true
+[node name="ShotAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_mbk0m")
+volume_db = -7.0
+pitch_scale = 0.7
 
-[connection signal="timeout" from="DashTimer" to="." method="end_dash"]
+[node name="InputHandler" parent="." instance=ExtResource("6_nypf3")]
+
+[editable path="Camera3D/WeaponPlace/glock"]

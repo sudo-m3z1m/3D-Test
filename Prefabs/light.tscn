@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1asfj8f60ce5"]
+
+[ext_resource type="PackedScene" uid="uid://8mjvl6yq708t" path="res://Models/light.glb" id="1_afqy3"]
+
+[node name="point_light" type="Node3D"]
+
+[node name="light" parent="." instance=ExtResource("1_afqy3")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.96589, 5.55727e-09, -0.258954, 0.258954, -4.21889e-08, 0.96589, -5.55727e-09, -1, -4.21889e-08, 2.47519, 13.3315, 0)
+light_energy = 10.0
+shadow_enabled = true
+distance_fade_length = 4096.0
+spot_range = 52.5126
+spot_angle = 21.9013

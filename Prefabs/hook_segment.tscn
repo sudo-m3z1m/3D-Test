@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://opbokwmqknmk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l87na"]
+size = Vector3(0.801025, 0.695557, 0.724609)
+
+[node name="HookSegment" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.875244, 0.693604, 0.705322)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_l87na")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.561118, 0, 0)
+exclude_nodes_from_collision = false

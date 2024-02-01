@@ -1,29 +1,29 @@
 extends Node3D
 class_name StateMachine
 
-@onready var self_owner: Player = get_parent()
-@onready var current_state: State = preload("res://Prefabs/PlayerStates/idle.gd").new()
+@onready var target: Player = get_parent()
 
-@export var start_state: int
-
-var cur_state: States = States.IDLE_STATE
-
-enum States {IDLE_STATE, MOVING_STATE, DASH_STATE, SLIDE_STATE, HOOK_STATE}
-
-var states: Dictionary = {
-	States.IDLE_STATE : "res://Prefabs/PlayerStates/idle.gd",
-	States.MOVING_STATE : "res://Prefabs/PlayerStates/moving.gd",
-	States.DASH_STATE : "res://Prefabs/PlayerStates/dash.gd",
-	States.HOOK_STATE : "res://Prefabs/PlayerStates/hook.gd"
+var states_map: Dictionary = {
+	"Idle" : "res://Prefabs/PlayerStates/idle.gd",
+	"Move" : "res://Prefabs/PlayerStates/moving.gd",
+	"Jump" : "res://Prefabs/PlayerStates/jump.gd",
+	"Dash" : "res://Prefabs/PlayerStates/dash.gd",
+	"Hook" : "res://Prefabs/PlayerStates/hook.gd"
 }
 
-func _process(delta):
-	current_state._update(delta)
+var current_state: String = "Idle"
+var current_state_script: State = State.new()
 
-func change_state(state: States) -> void:
-	if cur_state == state:
-		return
-	current_state._exit_state()
-	current_state = load(states[state]).new()
-	current_state._enter_state(self_owner.hands.get_node("AnimationPlayer"), self_owner)
-	cur_state = state
+func _physics_process(delta):
+	current_state_script._update(delta)
+
+func try_change_state(state: String) -> bool:
+	if current_state == state:
+		return true
+	if !current_state_script._exit_state(state):
+		return false
+	
+	current_state_script = load(states_map[state]).new()
+	current_state = state
+	current_state_script._enter_state(target, self)
+	return true

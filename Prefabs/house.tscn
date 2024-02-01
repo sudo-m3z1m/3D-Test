@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bft8ghe420pd5"]
+
+[node name="Platform" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0134183, 0)
+operation = 2
+use_collision = true
+size = Vector3(6.71118, 0.434082, 6.23853)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92649, -2.98181)
+size = Vector3(6.70508, 3.43347, 0.308838)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00211561, -0.00461912)
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.579488, 0.00461912)
+size = Vector3(1.38306, 2.26648, 0.308838)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.926, 2.96591)
+size = Vector3(6.70508, 3.43347, 0.308838)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53564, 0, 0)
+operation = 2
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2/CSGCombiner3D"]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76053, 0, 0)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.21299, 1.926, -0.149811)
+size = Vector3(5.91992, 3.43347, 0.308838)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGBox3D3"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D3/CSGCombiner3D"]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.19163, 1.926, -0.0115666)
+size = Vector3(5.64343, 3.43347, 0.308838)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGBox3D4"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D4/CSGCombiner3D"]

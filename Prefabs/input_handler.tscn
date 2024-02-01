@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wm44x5fpbays"]
+
+[ext_resource type="Script" path="res://Prefabs/PlayerStates/input_handler.gd" id="1_35tr8"]
+
+[node name="InputHandler" type="Node3D"]
+script = ExtResource("1_35tr8")

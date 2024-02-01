@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bl3s2mrd0mo6p"
-path="res://.godot/imported/camera.glb-3d827ff95e734d4cf3cd66e73cbeba2a.scn"
+uid="uid://crddf7nadvxk2"
+path="res://.godot/imported/house.glb-a93a0871918db67852b3b7c38ca12a3c.scn"
 
 [deps]
 
-source_file="res://Models/camera.glb"
-dest_files=["res://.godot/imported/camera.glb-3d827ff95e734d4cf3cd66e73cbeba2a.scn"]
+source_file="res://Models/house.glb"
+dest_files=["res://.godot/imported/house.glb-a93a0871918db67852b3b7c38ca12a3c.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="Scene Root"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
@@ -29,6 +29,18 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
-gltf/naming_version=0
+_subresources={
+"nodes": {
+"PATH:Cube": {
+"generate/physics": true
+},
+"PATH:Cube_001": {
+"generate/physics": true
+},
+"PATH:Cube_002": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
 gltf/embedded_image_handling=1

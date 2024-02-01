@@ -7,15 +7,14 @@
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/rotation = Quaternion(-0.119149, 0.333497, 0.906436, 0.230122)
 bones/1/rotation = Quaternion(0.526876, 0.0228685, 0.160054, 0.834423)
-bones/2/rotation = Quaternion(0.0841712, 0.114097, -0.0173934, 0.989745)
+bones/2/rotation = Quaternion(0.0841712, 0.114097, -0.0173935, 0.989745)
 bones/3/rotation = Quaternion(0.0283226, 0.286579, 0.806426, 0.516476)
 bones/4/rotation = Quaternion(-0.0123837, 0.232021, 0.629021, 0.741853)
 bones/6/rotation = Quaternion(0.344782, 0.372251, 0.449097, 0.735436)
-bones/7/rotation = Quaternion(-0.626663, -0.259509, -0.0880788, 0.729514)
+bones/7/rotation = Quaternion(-0.626663, -0.259509, -0.0880789, 0.729514)
 
-[node name="Cube003" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.000362148, -0.0142414, -0.0802348, 0.0300198, -0.00676988, 0.000209957, -0.00247731, -0.0799546, 0.0142735, -0.422526, -0.437016, 1.9724)
-bone_idx = 5
+[node name="Cube_003" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.000362149, -0.0142414, -0.0802348, 0.0300198, -0.00676988, 0.000209953, -0.00247731, -0.0799546, 0.0142735, -0.422526, -0.437016, 1.9724)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"
